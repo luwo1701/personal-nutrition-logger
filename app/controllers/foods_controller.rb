@@ -1,6 +1,6 @@
 class FoodsController < ApplicationController
   def index
-  
+	@food_group=FoodGroup.all  
   end
   def search
  	@apiKey="FrmKAzEVQQLWTvp17K7LaGnWRWuw02DhapJhbbK0"
