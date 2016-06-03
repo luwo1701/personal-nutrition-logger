@@ -1,6 +1,6 @@
 class FoodsController < ApplicationController
   def index
-	@food_group=FoodGroup.all  
+	@groups=FoodGroup.all  
   end
   def search
  	@apiKey="FrmKAzEVQQLWTvp17K7LaGnWRWuw02DhapJhbbK0"
@@ -9,9 +9,13 @@ class FoodsController < ApplicationController
   	response_resource = RestClient::Resource.new(url) #from what i understand it creates a RESTCLIENT object we can manipulate using the classes methods
  	 response=response_resource.get
  	 response_JSON = JSON.parse(response) #creates a ruby hash table out of the JSON object
- 	 10.times do |i|
+ 	 3.times do |i|
    	 @response = response_JSON ['list']['item'][i]["name"]
 	  
  	 end
   end
+  private
+      def article_params
+         params.require(:groups).permit(:menuName,:searchName)
+      end
 end

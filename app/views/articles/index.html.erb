@@ -1,5 +1,5 @@
 <h1>Listing articles</h1>
- 
+ <%@articles.each do |article| %>
 <table>
   <tr>
     <th>Title</th>
@@ -10,8 +10,8 @@
       <td><%= article.title %></td>
       <td><%= article.text %></td>
     </tr>
-  <% end %>
+  
 </table>
-
+<% end %>
 <%=link_to 'New', new_article_path %>
-<%= link_to 'Back', articles_path %>
+
