@@ -18,4 +18,5 @@ class FoodsController < ApplicationController
       def article_params
          params.require(:groups).permit(:menuName,:searchName)
       end
+
 end

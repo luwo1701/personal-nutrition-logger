@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :articles,:foods 
+
+  resources :articles,:foods,:users 
   root 'welcome#index'
   get '/search/', to: 'search#index' 
   # The priority is based upon order of creation: first created -> highest priority.
