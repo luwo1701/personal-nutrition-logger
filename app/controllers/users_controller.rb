@@ -7,8 +7,8 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 		@user.save	
-		redirect_to @user
-	#	render plain: params[:user].inspect
+		#redirect_to @user
+		render plain: params[:user].inspect
 	end
 	def show
     @user = User.find(params[:id])                            
@@ -16,6 +16,6 @@ class UsersController < ApplicationController
 
 	private
 		def user_params
-			params.require(:user).permit(:name,:email)
+			params.require(:user).permit(:name,:email,:password)
 		end
 end
