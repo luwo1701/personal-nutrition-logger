@@ -1,18 +1,16 @@
 class UsersController < ApplicationController
   def index
-		render plain: "index works"
 	end
 	def new
   end
 	def create
 		@user = User.new(user_params)
 		@user.save	
-		#redirect_to @user
-		render plain: params[:user].inspect
+		redirect_to @user
 	end
 	def show
-    @user = User.find(params[:id])                            
-  end 
+    @user = User.find(params[:id])    
+	end 
 
 	private
 		def user_params

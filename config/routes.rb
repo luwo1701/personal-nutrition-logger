@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   get 'sessions/new'
-
   resources :articles,:foods,:users 
   root 'welcome#index'
   get '/search/', to: 'search#index' 
