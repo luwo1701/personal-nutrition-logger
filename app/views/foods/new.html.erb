@@ -1,0 +1,7 @@
+<div class = "container">
+<%= for i in 0..@nutrientHash.length-1 do%>
+	<ul>
+		<%= button_to @nutrientHash[i]["name"], action: "create", params:@nutrientHash %>
+	</ul>
+<%end%>
+
