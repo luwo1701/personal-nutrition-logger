@@ -1,14 +1,12 @@
 
-  <p> Choose your food below  </p>
-   
-   <% for i in 0..@nutrientHash.length-1%>
-   <ul>	
-	<%= @nutrientHash[i]["name"]%>
-   </ul>
-   <%end %>
-<%= form_tag("/search", method: "get") do %>
-  <%= label_tag(:q, "Search Again:") %>
+<h1> "Search for a food"</h1>
+
+<%= form_tag("/foods", method: "get") do %>
+  <%= label_tag(:q, "Food Name:") %>
   <%= text_field_tag(:q) %>
+  
+  <%= label_tag(:groupChosen, "Choose a food Group") %>
+  <%=select_tag(:groupChosen, options_for_select([ ['American Indian/Alask Native Foods','American%20Indian/Alaska%20Native%20Foods'],['Baby Foods','Baby%20Foods'],['Baked Products','Baked%20Products'],['Beef Products','Beef%20Products'],['Beverages','Beverages'],['Branded Food Products','Branded%20Food%20Products%20Database'],['Breakfast Cereals','Breakfast%20Cereals'],['Cereal Grains and Pasta','Cereal%20Grains%20and%20Pasta'],['Fast Foods','Fast%20Foods'],['Fats and Oils','Fats%20and%20Oils'],['Finfish Game Products','Finfish%20and%20Shellfish%20Products'],['Fruits and Fruit Juices','Fruits%20and%20Fruit%20Juices'],['Lamb, Veal, and Game Products','Lamb,%20Veal,%20and%20Game%20Products'],['Legumes and Legume Products','Legumes%20and%20Legume%20Products'],['Meals, Entrees, and Side Dishes','Meals,%20Entrees,%20and%20Side%20Dishes'],['Nut and Seed Products','Nut%20and%20Seed%20Products'],['Pork Products','Pork%20Products'],['Poultry Products','Poultry%20Products'],['Restaurant Foods','Restaurant%20Foods'],['Sausages and Luncheon Meats','Sausages%20and%20Luncheon%20Meats'],['Snacks','Snacks'],['Soups Sauces and Gravies','Soups,%20Sauces,%20and%20Gravies'],['Spices and Herbs','Spices%20and%20Herbs'],['Sweets','Sweets'],['Vegetables and Vegetable Products','Vegetables%20and%20Vegetable%20Products'] ] ))%>
   <%= submit_tag("Search") %>
 <% end %>
-
+</div>
