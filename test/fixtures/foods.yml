@@ -1,9 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  calories: 
-
+  name: "butter"
+  calories: 100 
+  created_at: <%= 10.minutes.ago%>
 two:
-  name: MyString
-  calories: 
+  name: "chicken"
+  calories: 200
+  created_at: <%= 2.hours.ago%>
+
+most_recent:
+  name: "coffee"
+  calories: 0
+  created_at: <%= Time.zone.now %>
