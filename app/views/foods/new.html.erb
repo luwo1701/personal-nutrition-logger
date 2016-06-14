@@ -1,7 +1,9 @@
 <div class = "container">
 <%= for i in 0..@nutrientHash.length-1 do%>
 	<ul>
-		<%= button_to @nutrientHash[i]["name"], action: "create", params:@nutrientHash %>
+		<%-# button_to avoids crawl bots from posting to db as opposed to link_to which has security risks -%>
+		<%= button_to @nutrientHash[i]["name"], :controller => "foods", :action => "create", params: {:food =>@nutrientHash[i]} %>
 	</ul>
 <%end%>
+
 

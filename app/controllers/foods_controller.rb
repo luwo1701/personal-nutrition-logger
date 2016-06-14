@@ -23,7 +23,9 @@ class FoodsController < ApplicationController
       	nutrientUrl="http://api.nal.usda.gov/ndb/reports/?ndbno="+ndbno+"&type=b&format=json&api_key="+@apiKey
       	nutrients_JSON=JSON.parse(RestClient::Resource.new(nutrientUrl).get)
 				name = @response_JSON['list']['item'][i]['name']
-				@nutrientHash[i] = {"name"=>name,"calories" => nutrients_JSON['report']['food']['nutrients'][1]['value'],"protein" => nutrients_JSON['report']['food']['nutrients'][2]['value'],"fat" =>  nutrients_JSON['report']['food']['nutrients'][3]['value'] }	
+				@nutrientHash[i] = {"name"=>name,"calories" => nutrients_JSON['report']['food']['nutrients'][1]['value']}
+
+#,"protein" => nutrients_JSON['report']['food']['nutrients'][2]['value'],"fat" =>  nutrients_JSON['report']['food']['nutrients'][3]['value'] }	
     	end
     else
     @nutrientHash[0] = {"name" => "not found","calories"=> "not found","protein"=> "not found","fat"=> "not found"} 
@@ -38,6 +40,8 @@ class FoodsController < ApplicationController
 	
 	def create
 		@food = Food.new(food_params)
+		@food.save
+		render plain: "food created"
 	end
   private
       def food_params
