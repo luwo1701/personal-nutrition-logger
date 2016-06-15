@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
 		if user && user.authenticate(params[:session][:password])
 			log_in(user)
 			redirect_to user #sends to path "users/:id"
+			#render plain: "a new session has been created"
 		else
 			flash.now[:danger] = "The user name and password do not match"
 			render 'new'

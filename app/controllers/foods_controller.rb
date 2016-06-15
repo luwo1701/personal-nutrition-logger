@@ -1,13 +1,13 @@
 class FoodsController < ApplicationController
   def new
-  @food_group = FoodGroup.all
-  @q=params[:q]
-  @group = params[:groupChosen]  
-  @apiKey="FrmKAzEVQQLWTvp17K7LaGnWRWuw02DhapJhbbK0" 
-  @num_foods = 10
-  foodsUrl ="http://api.nal.usda.gov/ndb/search/?format=json&q="+@q+"&fg=Baked%20Products&sort=n&max=25&offset=0&api_key="+@apiKey
+  	@food_group = FoodGroup.all
+  	@q=params[:q]
+  	@group = params[:groupChosen]  
+  	@apiKey="FrmKAzEVQQLWTvp17K7LaGnWRWuw02DhapJhbbK0" 
+  	@num_foods = 10
+  	foodsUrl ="http://api.nal.usda.gov/ndb/search/?format=json&q="+@q+"&fg=Baked%20Products&sort=n&max=25&offset=0&api_key="+@apiKey
 	
-  @nutrientHash={}  
+  	@nutrientHash={}  
   
    response_resource = RestClient::Resource.new(foodsUrl) #from what i understand it creates a RESTCLIENT object we can manipulate using the classes methods 
    #404 code means resource not found.
@@ -39,9 +39,9 @@ class FoodsController < ApplicationController
 	end
 	
 	def create
-		@food = Food.new(food_params)
-		@food.save
-		render plain: "food created"
+		@user = User.find_by_id(session[:user_id])
+	 	@food = @user.foods.build(name: "butter", calories: 100)
+		render plain: "food created " + User.find_by_id(session[:user_id]).name#User.find_by_id(params[:session][:user_id])
 	end
   private
       def food_params
