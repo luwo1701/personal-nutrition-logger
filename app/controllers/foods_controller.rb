@@ -32,16 +32,16 @@ class FoodsController < ApplicationController
     
     end
   end
-
-  def search
-  end
 	def index
 	end
-	
+	def show
+	end	
 	def create
 		@user = User.find_by_id(session[:user_id])
 	 	@food = @user.foods.build(name: "butter", calories: 100)
-		render plain: "food created " + User.find_by_id(session[:user_id]).name#User.find_by_id(params[:session][:user_id])
+		#render plain: "food created " + User.find_by_id(session[:user_id]).name#User.find_by_id(params[:session][:user_id])
+		log_in(@user)	
+		redirect_to @user
 	end
   private
       def food_params

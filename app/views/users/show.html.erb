@@ -1,3 +1,5 @@
-<p> <%="Hello " + @user.name + " welcome to nutritionix, start by adding a food you eat regularly"%> </p>
 
+<h1> <%="Hello " + @user.name + " welcome to nutritionix, start by adding a food you eat regularly "%> </h1>
+
+<p><%= "foods you normally eat are " + @user.foods.name%></p>
 <%= link_to 'Add a food', foods_path%>
