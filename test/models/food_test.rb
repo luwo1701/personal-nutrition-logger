@@ -21,6 +21,6 @@ class FoodTest < ActiveSupport::TestCase
 	
 	test "order is in most recently added first" do
 	#:most_recent is a specific instance of foods stated in the foods.yaml file	
-	assert_equal foods(:most_recent), Food.first
+		assert_equal foods(:most_recent), Food.first
 	end
 end

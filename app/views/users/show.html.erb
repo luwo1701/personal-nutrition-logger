@@ -1,5 +1,11 @@
 
 <h1> <%="Hello " + @user.name + " welcome to nutritionix, start by adding a food you eat regularly "%> </h1>
-
-<p><%= "foods you normally eat are " + @user.foods.name%></p>
+<div class=container>	
+	<%if @user.foods.any?%>
+			<%=render @foods%>
+		<%=will_paginate @foods%>
+	<%else%>
+		<p> Please add a food <p>
+	<%end%>
+</div>
 <%= link_to 'Add a food', foods_path%>
