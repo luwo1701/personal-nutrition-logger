@@ -1,11 +1,13 @@
 
-<h1> <%="Hello " + @user.name + " welcome to nutritionix, start by adding a food you eat regularly "%> </h1>
-<div class=container>	
-	<%if @user.foods.any?%>
+<div class=container-fluid>
+	<div class=col-md-10>
+		<h1> <%="Hello " + @user.name + " welcome to nutritionix, start by adding a food you eat regularly "%> </h1>
+		<%if @user.foods.any?%>
 			<%=render @foods%>
-		<%=will_paginate @foods%>
-	<%else%>
-		<p> Please add a food <p>
-	<%end%>
+			<%=will_paginate @foods%>
+		<%else%>
+			<p> Please add a food <p>
+		<%end%>
+		<%= link_to 'Add a food', foods_path%>
+	</div>
 </div>
-<%= link_to 'Add a food', foods_path%>

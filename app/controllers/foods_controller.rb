@@ -38,8 +38,7 @@ class FoodsController < ApplicationController
 	end	
 	def create
 		@user = User.find_by_id(session[:user_id])
-	 	@food = @user.foods.build(name: "butter", calories: 100)
-		#render plain: "food created " + User.find_by_id(session[:user_id]).name#User.find_by_id(params[:session][:user_id])
+	 	@food = @user.foods.create!(food_params)
 		redirect_to @user
 	end
   private
