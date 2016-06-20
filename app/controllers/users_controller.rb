@@ -4,12 +4,13 @@ class UsersController < ApplicationController
 	def new
   end
 	def create
-		@user = User.new(user_params)
-		@user.save	
+		@user = User.create(user_params)
+		log_in(@user)
 		redirect_to @user
 	end
 	def show
-    @user = User.find(params[:id])    
+		@user = User.find(params[:id])    
+		@foods = @user.foods.paginate(page:params[:page])
 	end 
 
 	private
